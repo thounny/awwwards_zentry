@@ -74,7 +74,7 @@ const Hero = () => {
                 />
                 <video
                     src={getVideoSrc(currentIndex === totalVideos - 1 ? 1 : currentIndex)}
-                    // autoPlay
+                    autoPlay
                     loop
                     muted
                     className='absolute left-0 top-0 size-full object-cover object-center'
@@ -96,13 +96,16 @@ const Hero = () => {
                         </p>
                         <Button
                             id="watch-trailer"
-                            title="Watch Trailer"
+                            title="Watch More"
                             leftIcon={<TiLocationArrow />}
-                            containerClass="bg-yellow-300 flex-center gap-1"
+                            containerClass="!bg-blue-300 flex-center gap-1"
                         />
                     </div>
                 </div>
             </div>
+            <h1 className='special-font hero-heading absolute bottom-5 right-5 text-black'>
+                <b>K</b>eo
+            </h1>
         </div>
     );
 };
