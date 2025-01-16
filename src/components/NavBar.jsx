@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
+import { HiMenu, HiX } from "react-icons/hi";
 import Button from "./Button";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
@@ -13,6 +14,7 @@ const navItems = ["Home", "About", "Portfolio", "Skills", "Contact"];
 const NavBar = () => {
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
     const [isIndicatorActive, setIsIndicatorActive] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const audioElementRef = useRef(null);
     const navContainerRef = useRef(null);
@@ -24,6 +26,10 @@ const NavBar = () => {
     const toggleAudioIndicator = () => {
         setIsAudioPlaying((prev) => !prev);
         setIsIndicatorActive((prev) => !prev);
+    };
+
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen((prev) => !prev);
     };
 
     useEffect(() => {
@@ -64,6 +70,7 @@ const NavBar = () => {
             scrollTo: { y: `#${id}`, offsetY: 50 }, // Adjust `offsetY` to account for the navbar height
             ease: "power2.inOut",
         });
+        setIsMobileMenuOpen(false); // Close mobile menu after clicking
     };
 
     return (
@@ -72,7 +79,7 @@ const NavBar = () => {
             className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
         >
             <header className="absolute top-1/2 w-full -translate-y-1/2">
-                <nav className="flex size-full items-center justify-between p-4">
+                <nav className="flex items-center justify-between p-4">
                     {/* Logo and Service button */}
                     <div className="flex items-center gap-7">
                         <img src="/img/logo.png" alt="logo" className="w-10" />
@@ -86,23 +93,20 @@ const NavBar = () => {
                         />
                     </div>
 
-                    {/* Navigation Links and Audio Button */}
-                    <div className="flex h-full items-center">
-                        <div className="hidden md:block">
-                            {navItems.map((item, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => handleSmoothScroll(item.toLowerCase())}
-                                    className="nav-hover-btn"
-                                >
-                                    {item}
-                                </button>
-                            ))}
-                        </div>
-
+                    {/* Desktop Navigation Links */}
+                    <div className="hidden md:flex items-center gap-5">
+                        {navItems.map((item, index) => (
+                            <button
+                                key={index}
+                                onClick={() => handleSmoothScroll(item.toLowerCase())}
+                                className="nav-hover-btn"
+                            >
+                                {item}
+                            </button>
+                        ))}
                         <button
                             onClick={toggleAudioIndicator}
-                            className="ml-10 flex items-center space-x-0.5"
+                            className="ml-5 flex items-center space-x-0.5"
                         >
                             <audio
                                 ref={audioElementRef}
@@ -123,7 +127,32 @@ const NavBar = () => {
                             ))}
                         </button>
                     </div>
+
+                    {/* Mobile Menu Button */}
+                    <div className="md:hidden">
+                        <button onClick={toggleMobileMenu} className="text-white text-2xl">
+                            {isMobileMenuOpen ? <HiX /> : <HiMenu />}
+                        </button>
+                    </div>
                 </nav>
+
+                {/* Mobile Navigation Menu */}
+                {isMobileMenuOpen && (
+                    <div className="absolute top-16 inset-x-0 bg-black text-white py-4 z-40 shadow-lg md:hidden">
+                        <ul className="flex flex-col items-center gap-4">
+                            {navItems.map((item, index) => (
+                                <li key={index}>
+                                    <button
+                                        onClick={() => handleSmoothScroll(item.toLowerCase())}
+                                        className="nav-hover-btn text-lg"
+                                    >
+                                        {item}
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
             </header>
         </div>
     );
