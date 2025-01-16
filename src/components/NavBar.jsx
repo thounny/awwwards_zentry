@@ -8,7 +8,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 gsap.registerPlugin(ScrollToPlugin);
 
-const navItems = ["Home", "Portfolio", "Skills", "About", "Contact"];
+const navItems = ["Home", "About", "Portfolio", "Skills", "Contact"];
 
 const NavBar = () => {
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
