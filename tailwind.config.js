@@ -9,6 +9,7 @@ export default {
         "circular-web": ["circular-web", "sans-serif"],
         "robert-medium": ["robert-medium", "sans-serif"],
         "robert-regular": ["robert-regular", "sans-serif"],
+        "helvetica-neue": ["helvetica-neue", "helvetica", "sans-serif"],
       },
       colors: {
         blue: {
