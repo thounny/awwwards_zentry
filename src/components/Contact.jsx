@@ -15,12 +15,12 @@ const Contact = () => {
                 {/* Left Decorative Images */}
                 <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
                     <ImageClipBox
-                        src="/img/lean.jpg"
+                        src="/img/fallen_angel.gif"
                         clipClass="contact-clip-path-2"
                     />
                     <ImageClipBox
-                        src="/videos/project-5.gif"
-                        clipClass="contact-clip-path-1 lg:translate-y-40 translate-y-60"
+                        src="/img/anime.gif"
+                        clipClass="contact-clip-path-2 lg:translate-y-20 translate-y-60"
                     />
                 </div>
 
