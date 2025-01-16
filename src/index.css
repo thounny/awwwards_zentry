@@ -42,6 +42,10 @@ body {
     font-family: "zentry";
     src: url("/fonts/zentry-regular.woff2") format("woff2");
   }
+  @font-face {
+    font-family: "helvetica-neue";
+    src: url("/fonts/helvetica-neue.woff2") format("woff2");
+  }
 }
 
 /* ===========================
