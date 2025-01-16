@@ -83,7 +83,7 @@ const Hero = () => {
     const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
 
     return (
-        <div className="relative h-dvh w-screen overflow-x-hidden">
+        <div className="relative h-dvh w-screen overflow-x-hidden" id="home">
             {loading && (
                 <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
                     {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
@@ -148,7 +148,7 @@ const Hero = () => {
                             Tho<b>u</b>nny
                         </h1>
 
-                        <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
+                        <p className="mb-5 max-w-64 font-helvetica-neue text-blue-100">
                             Enter Tone&apos;s World. <br /> Creative Developer & Designer
                         </p>
 
@@ -156,7 +156,8 @@ const Hero = () => {
                             id="watch-trailer"
                             title="See More"
                             leftIcon={<TiLocationArrow />}
-                            containerClass="!bg-yellow-300 flex-center gap-1"
+                            containerClass="!bg-pink-300 flex-center gap-1"
+                            url="https://www.are.na/thounny-keo/s-tier-shit"
                         />
                     </div>
                 </div>

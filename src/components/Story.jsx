@@ -46,78 +46,49 @@ const FloatingImage = () => {
     };
 
     return (
-        <div id="about" className="min-h-dvh w-screen bg-black text-blue-50">
-            <div className="flex size-full flex-col items-center py-10 pb-24">
-                <p className="font-general text-sm uppercase md:text-[10px]">
-                    the creative journey
+        <div
+            id="skills"
+            className="min-h-screen w-screen bg-black text-blue-50 flex flex-col items-center px-5 md:px-10"
+        >
+            <p className="font-helvetica-neue text-xs uppercase mt-10 md:mt-16 md:text-sm">
+                the creative journey
+            </p>
+
+            <div className="relative w-full mt-5 md:mt-10 text-center">
+                <AnimatedTitle
+                    title="th<b>o</b>unny's<br /> path of design"
+                    containerClass="pointer-events-none mix-blend-difference relative z-10 text-4xl md:text-5xl font-black leading-tight"
+                />
+
+                <p className="mt-4 text-sm text-white-400 max-w-xs mx-auto md:mt-6 md:text-base md:max-w-md font-helvetica-neue">
+                    Explore my evolution as a <b>creative developer</b> and <b>designer</b>.
+                    Uncover the <b>projects</b>, <b>passion</b>, and <b>innovations</b> that define my
+                    digital journey.
                 </p>
 
-                <div className="relative size-full">
-                    <AnimatedTitle
-                        title="th<b>o</b>unny's<br /> path of design"
-                        containerClass="mt-5 pointer-events-none mix-blend-difference relative z-10"
-                    />
+            </div>
 
-                    <div className="story-img-container">
-                        <div className="story-img-mask">
-                            <div className="story-img-content">
-                                <img
-                                    ref={frameRef}
-                                    onMouseMove={handleMouseMove}
-                                    onMouseLeave={handleMouseLeave}
-                                    onMouseUp={handleMouseLeave}
-                                    onMouseEnter={handleMouseLeave}
-                                    src="/img/FW_Sticker_16 copy.png"
-                                    alt="creative-journey"
-                                    className="object-contain h-[25vh] md:h-[30vh] lg:h-[30vh]" // Responsive height for the sticker
-                                />
-                            </div>
-                        </div>
+            <div className="relative mt-10 md:mt-16 flex justify-center">
+                <video
+                    ref={frameRef}
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                    src="/videos/last.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="object-contain w-[90%] h-[200px] md:w-[70%] md:h-[300px] lg:w-[60%] lg:h-[600px]"
+                />
+            </div>
 
-                        {/* for the rounded corner */}
-                        <svg
-                            className="invisible absolute size-0"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <defs>
-                                <filter id="flt_tag">
-                                    <feGaussianBlur
-                                        in="SourceGraphic"
-                                        stdDeviation="8"
-                                        result="blur"
-                                    />
-                                    <feColorMatrix
-                                        in="blur"
-                                        mode="matrix"
-                                        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                                        result="flt_tag"
-                                    />
-                                    <feComposite
-                                        in="SourceGraphic"
-                                        in2="flt_tag"
-                                        operator="atop"
-                                    />
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-                </div>
-
-                <div className="-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
-                    <div className="flex h-full w-fit flex-col items-center md:items-start">
-                        <p className="mt-3 max-w-sm text-center font-circular-web text-violet-50 md:text-start">
-                            Explore my evolution as a creative developer and designer.
-                            Uncover the projects, passion, and innovations that define
-                            my digital journey.
-                        </p>
-
-                        <Button
-                            id="skills-btn"
-                            title="explore skills"
-                            containerClass="mt-5"
-                        />
-                    </div>
-                </div>
+            <div className="mt-10 md:mt-16">
+                <Button
+                    id="skills-btn"
+                    title="explore skills"
+                    containerClass="cursor-pointer px-6 py-2 text-sm md:text-base"
+                    url="https://thounny.github.io/30-day-code-challenge/"
+                />
             </div>
         </div>
     );

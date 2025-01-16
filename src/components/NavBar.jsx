@@ -3,18 +3,17 @@ import gsap from "gsap";
 import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
-
 import Button from "./Button";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const navItems = ["Home", "Portfolio", "Skills", "About", "Contact"];
 
-
 const NavBar = () => {
-    // State for toggling audio and visual indicator
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
     const [isIndicatorActive, setIsIndicatorActive] = useState(false);
 
-    // Refs for audio and navigation container
     const audioElementRef = useRef(null);
     const navContainerRef = useRef(null);
 
@@ -22,13 +21,11 @@ const NavBar = () => {
     const [isNavVisible, setIsNavVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
-    // Toggle audio and visual indicator
     const toggleAudioIndicator = () => {
         setIsAudioPlaying((prev) => !prev);
         setIsIndicatorActive((prev) => !prev);
     };
 
-    // Manage audio playback
     useEffect(() => {
         if (isAudioPlaying) {
             audioElementRef.current.play();
@@ -39,15 +36,12 @@ const NavBar = () => {
 
     useEffect(() => {
         if (currentScrollY === 0) {
-            // Topmost position: show navbar without floating-nav
             setIsNavVisible(true);
             navContainerRef.current.classList.remove("floating-nav");
         } else if (currentScrollY > lastScrollY) {
-            // Scrolling down: hide navbar and apply floating-nav
             setIsNavVisible(false);
             navContainerRef.current.classList.add("floating-nav");
         } else if (currentScrollY < lastScrollY) {
-            // Scrolling up: show navbar with floating-nav
             setIsNavVisible(true);
             navContainerRef.current.classList.add("floating-nav");
         }
@@ -62,6 +56,15 @@ const NavBar = () => {
             duration: 0.2,
         });
     }, [isNavVisible]);
+
+    // Smooth scroll handler
+    const handleSmoothScroll = (id) => {
+        gsap.to(window, {
+            duration: 1,
+            scrollTo: { y: `#${id}`, offsetY: 50 }, // Adjust `offsetY` to account for the navbar height
+            ease: "power2.inOut",
+        });
+    };
 
     return (
         <div
@@ -79,6 +82,7 @@ const NavBar = () => {
                             title="Services"
                             rightIcon={<TiLocationArrow />}
                             containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
+                            url="https://www.linkedin.com/in/thounny/"
                         />
                     </div>
 
@@ -86,13 +90,13 @@ const NavBar = () => {
                     <div className="flex h-full items-center">
                         <div className="hidden md:block">
                             {navItems.map((item, index) => (
-                                <a
+                                <button
                                     key={index}
-                                    href={`#${item.toLowerCase()}`}
+                                    onClick={() => handleSmoothScroll(item.toLowerCase())}
                                     className="nav-hover-btn"
                                 >
                                     {item}
-                                </a>
+                                </button>
                             ))}
                         </div>
 

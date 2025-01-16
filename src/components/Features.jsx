@@ -68,7 +68,7 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
                 <div>
                     <h1 className="bento-title special-font">{title}</h1>
                     {description && (
-                        <p className="mt-3 max-w-64 text-xs md:text-base">{description}</p>
+                        <p className="mt-3 max-w-64 text-xs md:text-base font-helvetica-neue">{description}</p>
                     )}
                 </div>
 
@@ -78,14 +78,14 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
                         onMouseMove={handleMouseMove}
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
-                        className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white/20"
+                        className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white/80"
                     >
                         {/* Radial gradient hover effect */}
                         <div
                             className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
                             style={{
                                 opacity: hoverOpacity,
-                                background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
+                                background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, pink, #00000026)`,
                             }}
                         />
                         <TiLocationArrow className="relative z-20" />
@@ -98,7 +98,7 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
 };
 
 const Features = () => (
-    <section className="bg-black pb-52">
+    <section className="bg-black pb-52" id="portfolio">
         <div className="container mx-auto px-3 md:px-10">
             <div className="px-5 py-32">
                 <p className="font-circular-web text-lg text-blue-50">
